@@ -1,5 +1,5 @@
 # El llenguatge de programació Llull
-Llull es un llenguatge de programació molt similar a C
+Llull és un llenguatge de programació molt similar a C
 
 ## Instalació
 ```bash
@@ -132,6 +132,3 @@ El programa tracta tots els errors esmentats a l'enunciat
 
 ## Autor
 Marc Nebot Moyano
-
-## Nota
-9.5

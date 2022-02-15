@@ -30,7 +30,9 @@ class MainVisitor(llullVisitor):
 
     # Método que llama a las acciones de .llull
     def llamarAcciones(self, nombre, valores):
-        if len(self.acciones[nombre].parametros) > len(valores):
+        if nombre not in self.acciones:
+            raise Errores("No existe el procedimiento " + nombre + " defínelo y vuelve a intentarlo")
+        elif len(self.acciones[nombre].parametros) > len(valores):
             raise Errores("El número de parámetros introducidos es menor al requerido")
         elif len(self.acciones[nombre].parametros) < len(valores):
             raise Errores("El número de parámetros introducidos es mayor al requerido")
@@ -84,9 +86,8 @@ class MainVisitor(llullVisitor):
 
     # Lee un valor
     def visitRead(self, ctx: llullParser.ReadContext):
-        valor = input()
-        variable = ctx.IDENTIFICADOR().getText()
-        self.memoria[-1][variable] = int(valor)
+        l = list(ctx.getChildren())
+        self.memoria[-1][l[2].getText()] = int(input())
 
     # Asigna un valor a una variable
     def visitAsignacion(self, ctx: llullParser.AsignacionContext):
@@ -101,7 +102,7 @@ class MainVisitor(llullVisitor):
         array = []
         i = 0
         for i in range(0, posiciones):
-            array.insert(0, 0)
+            array.insert(i, 0)
         self.memoria[-1][nombre] = array
 
     # Visit a parse tree produced by llullParser#getArray.
@@ -119,7 +120,7 @@ class MainVisitor(llullVisitor):
         nombre = ctx.IDENTIFICADOR().getText()
         posicion = int(self.visit(ctx.expr(0)))
         valor = int(self.visit(ctx.expr(1)))
-        self.memoria[-1][nombre].insert(posicion, valor)
+        self.memoria[-1][nombre][posicion] = valor
 
     # Visit a parse tree produced by llullParser#conditionalIf.
     def visitConditionalIf(self, ctx: llullParser.ConditionalIfContext):
