@@ -1,0 +1,102 @@
+Turing complet: LPs que pueden implementar cualquier cálculo que un computador pueda realizar
+
+Sistema de ejecución: compilada o interpretada aunque algunos pueden ser mixtos
+
+Seguridad te tipos: qué tan fácil es cometer error de tipos
+
+Tipat fort: No se pueden mezclar tipos 
+
+Tipat feble: El LP puede convertir tipos automáticamente: 4 +'7' = '47'
+
+Tipat dinámic: El LP va detectando los tipos sin que se lo digas mientras se ejecuta
+
+Tipat estátic: Se lo tienes que decir antes de compilar (puede ser mixta tmb)
+
+Lambda cálcul: LambdaX.LambdaY.x+y -> f(x,y) = x+y
+
+Currificación: Transformar función de n parámetros en una de 1 parámetro (el primero) que devuelve una función de n-1 ...
+
+Beta reducción: -> lambdaX.uv -> beta u[x:= v]
+u[x := v] significa reescribir u sustituyendo x por v
+
+Tipos de beta reducción: 
+-Orden normal: reducir la lambda más a la izquierda
+-Orden aplicativo, reducir desde dentro de los paréntesis havia afuera
+
+Alpha conversión -> cambiar nombres a variables
+
+Lligada: Una variable está lligada si aparece en la cabeza de una función. Por ejemplo lambdaX.xy, lambdaY.y. En la primera y es libre y en la segunda atada.
+
+Macros: cambiar funciones por un nombre y ya
+
+--FUNCIONES DE HASKELL--
+•head: devuelve el primer elemento de la lista
+•last: el último
+•tail: la lista sin el primer elemento
+•init la lista sin el último elemento
+•reverse: gira lista
+•length: el tamaño
+•null: dice si está vacía o no
+•elem x lista: indica si el elemento x aparece en la lista
+•!!: Lista !! 3 -> devuelve el elemento en la pos 3
+•++: concatenación
+•maximum y minimum
+•sum, product: sumatorio de la lista y productorio
+•and, ors
+•take n lista, pilla los primeros n valores de la lista
+•drop n lista, quita los primeros n valores de la lista
+•zip: junta la posición i de dos listas creando un struct [(L1i,L2i)...]
+•repeat valor, escribe el número valor infinitas veces
+•concat [L1,L2...]: Concatena todas las listas
+•map cosa Lista: aplica cosa a toda la lista
+•. : Composición de dos funciones -> (reverse . sort) [5,3,5,2] -> [5,5,3,2]
+•apli2 f x: aplica 2 veces una función a un elemento
+•Funciones anónimas: \x -> 2* x
+-------
+
+Secciones: permiten aplicar operadores tanto así (+ 2) como así (2 +)
+
+Listas con rangos: [1, .., 10] -> [1,2,3,4,5,6,7,8,9,10]
+
+Listas por comprensión: [(variables) | dominios o condiciones o lo que sea] por ejemplo mirar transpas esto devuelve todos los valores que cumplan esas condiciones
+
+Tipos predefinidos: los básicos
+Tipos polimórficos: los de las funciones
+Tipos sinónimos: los de la práctica (Euros que es un Float etc)
+Tipus enunerats: Posibles valores, el data ese
+Tipus algebraics: El data con el posible valor y su cálculo + deriving (Show)
+
+La clase Eq sirve para definir igualdades por ejemplo en los data
+La clase Ord para definir ordenación en los data
+La clase Show para definir la impresión en los data
+La clase Read para definir la lectura en los data
+La clase Num para definir la aritmética en los data
+
+--FUNCTORS--
+Functors: fmap pilla una función y se la aplica a algo sin cambiar el contenedor
+Maybe: Podemos buscar cosas con fmap sin tener que tratar los resultados null de la consulta
+Either
+
+--APLICATIUS--
+Aplicar funciones dentro de contenedores
+pure: construye nuevo contenedor
+<*>: Aplica función a lo de dentro del contenedor
+
+--MONADES--
+return: empaqueta
+>>=: desempaqueta, aplica, empaqueta
+>>: estética
+do: para facilitar mónadas por ejemplo en el IO()
+
+En IO() se usa el do y el let m = funcion loquesea, indispensable usar el let para guardar valores y luego imprimirlos en vez de el where
+
+CURIOSIDADES:
+Decorador python: Función que transforma otra función con una determinada funcionalidad añadida cambiando su comportamiento
+
+Clausures: Función que captura su contexto léxico en el momento de la creación
+
+Clase abstracta: Clase con algunos métodos declarados pero no implementados
+
+Type safe: Un lenguaje es type safe cuando las únicas operaciones que se pueden aplicar permiten tipos de datos
+
+El extends en C++ en una llamada se queda con la última y las subclases pueden acceder a los parámetros de las clases pero no al revés
