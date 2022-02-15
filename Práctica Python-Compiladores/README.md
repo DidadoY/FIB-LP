@@ -132,3 +132,6 @@ El programa tracta tots els errors esmentats a l'enunciat
 
 ## Autor
 Marc Nebot Moyano
+
+## Nota
+9.5
