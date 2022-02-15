@@ -1,0 +1,5 @@
+void hanoi(n,ori,dst,aux)
+{    # la n és un real negatiu
+    if(n>0){hanoi(n-1,ori,aux,dst)write(ori,"->",dst)hanoi(n-1,aux,
+        dst, ori
+)}}
